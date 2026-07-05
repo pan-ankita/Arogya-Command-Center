@@ -1,0 +1,24 @@
+{
+  "translation": {
+    "app_name": "ArogyaLive",
+    "tagline": "Real-time visibility. Smarter resources. Healthier districts.",
+    "login_staff": "Facility Staff Login",
+    "login_admin": "District Admin Login",
+    "find_facility": "Find a Health Centre",
+    "dashboard": "Dashboard",
+    "stock": "Stock",
+    "footfall": "Footfall",
+    "beds": "Beds",
+    "attendance": "Attendance",
+    "tests": "Tests",
+    "calamity": "Calamity",
+    "logout": "Logout",
+    "settings": "Settings",
+    "language": "Language",
+    "high_contrast": "High Contrast",
+    "font_size": "Font Size",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
+}

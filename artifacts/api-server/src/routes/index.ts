@@ -1,0 +1,34 @@
+import { Router, type IRouter } from "express";
+import healthRouter from "./health";
+import authRouter from "./auth";
+import facilitiesRouter from "./facilities";
+import medicinesRouter from "./medicines";
+import stockRouter from "./stock";
+import footfallRouter from "./footfall";
+import bedsRouter from "./beds";
+import doctorsRouter from "./doctors";
+import testsRouter from "./tests";
+import calamityRouter from "./calamity";
+import alertsRouter from "./alerts";
+import redistRouter from "./redistribution";
+import aiRouter from "./ai";
+import publicRouter from "./public";
+
+const router: IRouter = Router();
+
+router.use(healthRouter);
+router.use(authRouter);
+router.use(facilitiesRouter);
+router.use(medicinesRouter);
+router.use(stockRouter);
+router.use(footfallRouter);
+router.use(bedsRouter);
+router.use(doctorsRouter);
+router.use(testsRouter);
+router.use(calamityRouter);
+router.use(alertsRouter);
+router.use(redistRouter);
+router.use(aiRouter);
+router.use(publicRouter);
+
+export default router;

@@ -2,6 +2,7 @@ import { Router, type IRouter } from "express";
 import { eq, and, gte } from "drizzle-orm";
 import { db, patientFootfallTable } from "@workspace/db";
 import { sql } from "drizzle-orm";
+import { getIO } from "../lib/socket";
 
 const router: IRouter = Router();
 
@@ -57,7 +58,7 @@ router.post("/footfall/log", async (req, res): Promise<void> => {
   if (existing) {
     const [updated] = await db
       .update(patientFootfallTable)
-      .set({ count: existing.count + count })
+      .set({ count })
       .where(eq(patientFootfallTable.id, existing.id))
       .returning();
     record = updated;
@@ -68,6 +69,12 @@ router.post("/footfall/log", async (req, res): Promise<void> => {
       .returning();
     record = created;
   }
+
+  getIO().emit("footfall-update", {
+  facilityId: record.facilityId,
+  department: record.department,
+  count: record.count,
+});
 
   res.status(201).json({
     id: record.id,

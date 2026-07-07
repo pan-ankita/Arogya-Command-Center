@@ -50,7 +50,7 @@ export default function AdminAlerts() {
             <p className="text-muted-foreground">Log of all district-wide notifications and automated flags.</p>
           </div>
           
-          <div className="flex items-center gap-2 bg-white border rounded-lg p-1 shadow-sm">
+          <div className="flex items-center gap-2 bg-card border rounded-lg p-1 shadow-sm">
             <Filter className="h-4 w-4 text-slate-400 ml-2" />
             <Select value={severityFilter} onValueChange={setSeverityFilter}>
               <SelectTrigger className="border-0 focus:ring-0 w-[150px] shadow-none">
@@ -66,20 +66,20 @@ export default function AdminAlerts() {
           </div>
         </div>
 
-        <Card className="shadow-sm border-slate-200">
+        <Card className="shadow-sm border-border">
           <CardContent className="p-0">
             {isLoading ? (
               <div className="p-6"><SkeletonList /></div>
             ) : !alerts || alerts.length === 0 ? (
               <div className="p-16 text-center text-slate-500 flex flex-col items-center">
                 <CheckCircle2 className="h-12 w-12 text-slate-300 mb-4" />
-                <p className="text-lg font-medium text-slate-600">No alerts found</p>
+                <p className="text-lg font-medium text-muted-foreground">No alerts found</p>
                 <p className="text-sm">Try changing your filters.</p>
               </div>
             ) : (
               <div className="divide-y divide-slate-100">
                 {alerts.map(alert => (
-                  <div key={alert.id} className={`p-4 sm:p-6 flex flex-col sm:flex-row gap-4 transition-colors hover:bg-slate-50/50 ${!alert.isRead ? 'bg-slate-50/80' : ''}`}>
+                  <div key={alert.id} className={`p-4 sm:p-6 flex flex-col sm:flex-row gap-4 transition-colors hover:bg-background/50 ${!alert.isRead ? 'bg-background/80' : ''}`}>
                     <div className="flex-1 flex gap-4">
                       <div className="shrink-0 mt-1">
                         {getSeverityIcon(alert.severity)}
@@ -93,10 +93,10 @@ export default function AdminAlerts() {
                           }`}>
                             {alert.severity}
                           </span>
-                          <span className="text-sm font-semibold text-slate-700">{alert.facilityName || 'System'}</span>
+                          <span className="text-sm font-semibold text-muted-foreground">{alert.facilityName || 'System'}</span>
                           <span className="text-xs text-slate-400">• {alert.type}</span>
                         </div>
-                        <p className={`text-slate-900 ${!alert.isRead ? 'font-medium' : ''}`}>
+                        <p className={`text-foreground ${!alert.isRead ? 'font-medium' : ''}`}>
                           {alert.message}
                         </p>
                         <div className="text-xs text-slate-500 mt-2">

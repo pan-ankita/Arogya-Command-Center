@@ -147,7 +147,7 @@ export default function CitizenFacilityView() {
               {loadingBeds ? (
                 <SkeletonCard />
               ) : beds?.length === 0 ? (
-                <div className="text-slate-500 border rounded-xl p-6 bg-slate-50">No bed data available.</div>
+                <div className="text-slate-500 border rounded-xl p-6 bg-background">No bed data available.</div>
               ) : (
                 <div className="grid gap-4">
                   {beds?.map(ward => (
@@ -173,17 +173,17 @@ export default function CitizenFacilityView() {
               {loadingAttendance ? (
                 <SkeletonCard />
               ) : attendance?.filter(a => a.status === 'present').length === 0 ? (
-                <div className="text-slate-500 border rounded-xl p-6 bg-slate-50">No doctors currently checked in.</div>
+                <div className="text-slate-500 border rounded-xl p-6 bg-background">No doctors currently checked in.</div>
               ) : (
-                <div className="bg-white border rounded-xl overflow-hidden shadow-sm">
+                <div className="bg-card border rounded-xl overflow-hidden shadow-sm">
                   <div className="divide-y">
                     {attendance?.filter(a => a.status === 'present').map(record => (
                       <div key={record.id} className="p-4 flex items-center gap-4">
-                        <div className="bg-slate-100 h-10 w-10 rounded-full flex items-center justify-center">
+                        <div className="bg-muted h-10 w-10 rounded-full flex items-center justify-center">
                           <UserCircle className="h-6 w-6 text-slate-400" />
                         </div>
                         <div>
-                          <div className="font-semibold text-slate-900">{record.doctorName}</div>
+                          <div className="font-semibold text-foreground">{record.doctorName}</div>
                           <div className="text-xs text-green-600 font-medium">Checked in at {record.checkInTime ? format(new Date(record.checkInTime), 'h:mm a') : 'today'}</div>
                         </div>
                       </div>
@@ -202,14 +202,14 @@ export default function CitizenFacilityView() {
               {loadingStock ? (
                 <SkeletonCard />
               ) : essentialMeds.length === 0 ? (
-                <div className="text-slate-500 border rounded-xl p-6 bg-slate-50">Medicine stock data not currently public.</div>
+                <div className="text-slate-500 border rounded-xl p-6 bg-background">Medicine stock data not currently public.</div>
               ) : (
                 <Card className="shadow-sm">
                   <CardContent className="p-0">
                     <div className="divide-y">
                       {essentialMeds.map(med => (
                         <div key={med.id} className="p-4 flex justify-between items-center">
-                          <div className="font-medium text-slate-900">{med.medicineName}</div>
+                          <div className="font-medium text-foreground">{med.medicineName}</div>
                           <StatusBadge 
                             status={med.stockStatus === 'out' ? 'critical' : med.stockStatus === 'low' ? 'warning' : 'success'} 
                             text={med.stockStatus === 'out' ? 'Out of Stock' : med.stockStatus === 'low' ? 'Low Stock' : 'Available'} 

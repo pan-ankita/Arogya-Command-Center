@@ -46,7 +46,7 @@ export default function AdminInsights() {
               </CardHeader>
               <CardContent className="pt-6">
                 {loadingForecast ? (
-                  <div className="h-64 w-full bg-slate-100 animate-pulse rounded-xl" />
+                  <div className="h-64 w-full bg-muted animate-pulse rounded-xl" />
                 ) : forecast?.medicines && forecast.medicines.length > 0 ? (
                   <div className="space-y-8">
                     {forecast.medicines.map((med) => (
@@ -113,9 +113,9 @@ export default function AdminInsights() {
                 ) : flags && flags.length > 0 ? (
                   <div className="divide-y">
                     {flags.map(flag => (
-                      <div key={flag.id} className="p-4 bg-white hover:bg-slate-50 transition-colors">
+                      <div key={flag.id} className="p-4 bg-card hover:bg-background transition-colors">
                         <div className="flex justify-between items-start mb-2">
-                          <h4 className="font-semibold text-slate-900">{flag.facilityName}</h4>
+                          <h4 className="font-semibold text-foreground">{flag.facilityName}</h4>
                           <span className={`text-xs px-2 py-0.5 rounded font-bold ${
                             flag.status === 'critical' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'
                           }`}>
@@ -123,7 +123,7 @@ export default function AdminInsights() {
                           </span>
                         </div>
                         {flag.reasonBreakdown && (
-                          <ul className="text-sm text-slate-600 space-y-1 list-disc pl-4 mt-2">
+                          <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4 mt-2">
                             {Object.entries(flag.reasonBreakdown).map(([key, value]) => (
                               <li key={key}>{String(value)}</li>
                             ))}

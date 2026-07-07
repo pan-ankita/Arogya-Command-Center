@@ -99,9 +99,9 @@ export default function FacilityAttendance() {
                   const isLate = record?.status === 'late';
                   
                   return (
-                    <div key={doctor.id} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors hover:bg-slate-50/50">
+                    <div key={doctor.id} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors hover:bg-background/50">
                       <div className="flex items-start gap-4">
-                        <div className="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                        <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center shrink-0">
                           <Stethoscope className="h-6 w-6 text-slate-400" />
                         </div>
                         <div>
@@ -109,7 +109,7 @@ export default function FacilityAttendance() {
                           <p className="text-sm text-muted-foreground">{doctor.specialization}</p>
                           
                           {record?.checkInTime && (
-                            <div className="flex items-center text-xs text-slate-500 mt-1 font-mono bg-slate-100 inline-flex px-2 py-0.5 rounded">
+                            <div className="flex items-center text-xs text-slate-500 mt-1 font-mono bg-muted inline-flex px-2 py-0.5 rounded">
                               <Clock className="h-3 w-3 mr-1" />
                               Checked in: {format(new Date(record.checkInTime), 'h:mm a')}
                             </div>

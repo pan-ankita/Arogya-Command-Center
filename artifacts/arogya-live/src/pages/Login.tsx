@@ -6,15 +6,8 @@ import { Activity, User, Shield, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 import { PublicLayout } from "@/layouts/PublicLayout";
@@ -53,8 +46,8 @@ export default function Login() {
         },
         onError: () => {
           toast({
-            title: "Login Failed",
-            description: "Please check your credentials and try again.",
+            title: t("login_failed"),
+            description: t("login_failed_desc"),
             variant: "destructive",
           });
         },
@@ -87,11 +80,9 @@ export default function Login() {
                 <Activity className="h-8 w-8" />
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold tracking-tight">
-              Welcome Back
-            </CardTitle>
+            <CardTitle className="text-2xl font-bold tracking-tight">{t("welcome_back")}</CardTitle>
             <CardDescription>
-              Sign in to your ArogyaLive account
+              {t("login_description")}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -99,20 +90,20 @@ export default function Login() {
               <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="staff" data-testid="tab-staff">
                   <User className="mr-2 h-4 w-4" />
-                  Facility Staff
+                  {t("facility_staff")}
                 </TabsTrigger>
                 <TabsTrigger value="admin" data-testid="tab-admin">
                   <Shield className="mr-2 h-4 w-4" />
-                  District Admin
+                  {t("district_admin")}
                 </TabsTrigger>
               </TabsList>
 
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="username">Username</Label>
-                  <Input
-                    id="username"
-                    placeholder="Enter your username"
+                  <Label htmlFor="username">{t("username")}</Label>
+                  <Input 
+                    id="username" 
+                    placeholder={t("username_placeholder")} 
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
@@ -121,12 +112,12 @@ export default function Login() {
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">{t("password")}</Label>
                   </div>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
+                  <Input 
+                    id="password" 
+                    type="password" 
+                    placeholder={t("password_placeholder")}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -140,42 +131,24 @@ export default function Login() {
                   data-testid="btn-submit-login"
                 >
                   {loginMutation.isPending ? (
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  ) : (
-                    "Sign In"
-                  )}
+                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    ) : (
+                       t("sign_in")
+                    )}
                 </Button>
               </form>
             </Tabs>
           </CardContent>
           <CardFooter className="flex flex-col gap-4 border-t bg-background/50 p-6">
-            <div className="text-sm font-medium text-slate-500 mb-2">
-              Demo Credentials:
-            </div>
+            <div className="text-sm font-medium text-slate-500 mb-2">{t("demo_credentials")}</div>
             <div className="grid grid-cols-2 gap-3 w-full">
-              <Button
-                variant="outline"
-                className="text-xs h-auto py-2 flex flex-col items-start gap-1"
-                onClick={() => handleDemoFill("staff")}
-              >
-                <span className="font-semibold text-muted-foreground">
-                  Staff Demo
-                </span>
-                <span className="text-slate-500 font-mono">
-                  rishra_phc / demo1234
-                </span>
+              <Button variant="outline" className="text-xs h-auto py-2 flex flex-col items-start gap-1" onClick={() => handleDemoFill("staff")}>
+                <span className="font-semibold bg-background/50">{t("staff_demo")}</span>
+                <span className="text-slate-500 font-mono">rishra_phc / demo1234</span>
               </Button>
-              <Button
-                variant="outline"
-                className="text-xs h-auto py-2 flex flex-col items-start gap-1"
-                onClick={() => handleDemoFill("admin")}
-              >
-                <span className="font-semibold text-muted-foreground">
-                  Admin Demo
-                </span>
-                <span className="text-slate-500 font-mono">
-                  admin_hooghly / admin1234
-                </span>
+              <Button variant="outline" className="text-xs h-auto py-2 flex flex-col items-start gap-1" onClick={() => handleDemoFill("admin")}>
+                <span className="font-semibold text-muted-foreground">{t("admin_demo")}</span>
+                <span className="text-slate-500 font-mono">admin_hooghly / admin1234</span>
               </Button>
             </div>
           </CardFooter>

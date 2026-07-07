@@ -34,21 +34,21 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
             <h3 className="font-bold text-white text-lg">
-              Arogya Command Center
+              {t("footer_title")}
             </h3>
 
-            <p className="text-sm">Digital Healthcare Monitoring Platform</p>
+            <p className="text-sm"> {t("footer_description")}</p>
           </div>
 
           <div className="flex gap-6 text-sm">
-            <a href="#">Privacy Policy</a>
+            <a href="#">{t("privacy_policy")}</a>
 
-            <a href="#">Contact</a>
+            <a href="#">{t("contact")}</a>
 
-            <a href="#">Help</a>
+            <a href="#">{t("help")}</a>
           </div>
 
-          <div className="text-sm">© 2026 Arogya Command Center</div>
+          <div className="text-sm">{t("copyright")}</div>
         </div>
       </footer>
     </div>

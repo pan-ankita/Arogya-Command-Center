@@ -21,23 +21,17 @@ export default function Landing() {
             <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-2xl mb-4">
               <Activity className="h-10 w-10 text-primary" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold text-slate-900 tracking-tight leading-tight">
-              Real-time visibility.
-              <br />
-              <span className="text-primary">Smarter resources.</span>
-              <br />
-              Healthier districts.
-            </h1>
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-slate-900 tracking-tight leading-tight">
+              {t("tagline")}
+             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              The digital command center for Primary and Community Health
-              Centers. Replacing paper registers with fast, voice-enabled,
-              real-time insights.
+            {t("description")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
               {/* <Button asChild size="lg" className="h-14 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 w-full sm:w-auto" data-testid="btn-login-staff"> */}
                 <Button asChild size="lg" className="h-14 px-8 rounded-xl bg-blue-400 hover:bg-blue-700 text-white text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-testid="btn-login-staff">
-                <Link href="/login?role=staff">Facility Staff Login</Link>
+                <Link href="/login?role=staff">{t("login_staff")}</Link>
               </Button>
               {/* <Button
                 asChild
@@ -46,7 +40,7 @@ export default function Landing() {
                 className="h-14 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 w-full sm:w-auto"
                 data-testid="btn-login-admin"> */}
                 <Button asChild size="lg" variant="secondary" className="h-14 px-8 rounded-xl bg-emerald-400 hover:bg-emerald-700 text-white text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-testid="btn-login-admin">
-                <Link href="/login?role=admin">District Admin Login</Link>
+                <Link href="/login?role=admin"> {t("login_admin")}</Link>
               </Button>
             </div>
 
@@ -58,7 +52,7 @@ export default function Landing() {
                 className="text-blue-600 text-lg font-semibold hover:text-blue-800 hover:underline underline-offset-4"
                 data-testid="btn-find-facility"
               >
-                <Link href="/citizen">Find a Health Centre near you →</Link>
+                <Link href="/citizen">{t("find_facility")} →</Link>
               </Button>
             </div>
           </div>
@@ -66,33 +60,33 @@ export default function Landing() {
 
         <section className="bg-amber-50 py-16">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8">Notices & Announcements</h2>
-
+            <h2 className="text-3xl font-bold mb-8">
+              {t("notices")}
+            </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="rounded-xl border bg-white p-6 shadow-sm">
-                <h3 className="font-semibold text-lg">Vaccination Camp</h3>
+                <h3 className="font-semibold text-lg">{t("vaccination_camp")}</h3>
 
                 <p className="text-slate-600 mt-2">
-                  Free vaccination drive across all PHCs from July 15–20.
+                  {t("vaccination_desc")}
                 </p>
               </div>
 
               <div className="rounded-xl border bg-white p-6 shadow-sm">
-                <h3 className="font-semibold text-lg">Blood Donation Camp</h3>
+                <h3 className="font-semibold text-lg">{t("blood_donation")}</h3>
 
                 <p className="text-slate-600 mt-2">
-                  Community Blood Donation Camp this weekend.
+                  {t("blood_donation_desc")}
                 </p>
               </div>
 
               <div className="rounded-xl border bg-white p-6 shadow-sm">
                 <h3 className="font-semibold text-lg">
-                  New Telemedicine Service
+                  {t("telemedicine")}
                 </h3>
 
                 <p className="text-slate-600 mt-2">
-                  Online consultations are now available in selected health
-                  centres.
+                  {t("telemedicine_desc")}
                 </p>
               </div>
             </div>
@@ -107,30 +101,27 @@ export default function Landing() {
                 <div className="h-12 w-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
                   <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">Real-Time Insights</h3>
+                <h3 className="text-xl font-semibold">{t("real_time_insights")}</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Spot stockouts, bed shortages, and staff absences instantly.
-                  No more waiting for end-of-month reports.
+                  {t("real_time_insights_desc")}
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="h-12 w-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center">
                   <ShieldCheck className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">AI Redistribution</h3>
+                <h3 className="text-xl font-semibold">{t("ai_redistribution")}</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Smart algorithms suggest resource redistribution between
-                  facilities to prevent localized shortages.
+                  {t("ai_redistribution_desc")}
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="h-12 w-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center">
                   <Users className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">Citizen Transparency</h3>
+                <h3 className="text-xl font-semibold">{t("citizen_transparency")}</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Public portal allowing citizens to check bed availability and
-                  doctor presence before visiting.
+                 {t("citizen_transparency_desc")}
                 </p>
               </div>
             </div>

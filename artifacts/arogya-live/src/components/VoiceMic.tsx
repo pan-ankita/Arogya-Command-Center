@@ -179,9 +179,9 @@ export function VoiceMic({ facilityId }: { facilityId: number }) {
             <Loader2 className="h-6 w-6 animate-spin text-white" />
           ) : isListening ? (
             <div className="flex gap-1 items-center justify-center">
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+              <span className="w-1.5 h-1.5 bg-card rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+              <span className="w-1.5 h-1.5 bg-card rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+              <span className="w-1.5 h-1.5 bg-card rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
             </div>
           ) : (
             <Mic className="h-6 w-6 text-white" />
@@ -197,8 +197,8 @@ export function VoiceMic({ facilityId }: { facilityId: number }) {
               We heard: "{transcript}"
             </DialogDescription>
           </DialogHeader>
-          <div className="bg-slate-50 p-4 rounded-lg border my-2">
-            <h4 className="font-semibold text-sm mb-2 text-slate-700">Parsed Command:</h4>
+          <div className="bg-background p-4 rounded-lg border my-2">
+            <h4 className="font-semibold text-sm mb-2 text-muted-foreground">Parsed Command:</h4>
             {parsedResult && (
               <ul className="space-y-1 text-sm">
                 <li><strong>Action:</strong> <span className="capitalize">{parsedResult.action.replace('_', ' ')}</span></li>

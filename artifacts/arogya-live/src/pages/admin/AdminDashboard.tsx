@@ -31,7 +31,7 @@ export default function AdminDashboard() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900">District Command Center</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">District Command Center</h2>
             <p className="text-slate-500">Hooghly District Overview</p>
           </div>
           <div className="flex gap-2">
@@ -121,7 +121,7 @@ export default function AdminDashboard() {
               </CardHeader>
               <CardContent className="p-6">
                 {loadingFacilities ? (
-                  <div className="h-64 w-full bg-slate-100 animate-pulse rounded-xl" />
+                  <div className="h-64 w-full bg-muted animate-pulse rounded-xl" />
                 ) : (
                   <div className="grid sm:grid-cols-2 gap-4">
                     {facilities?.map(facility => (
@@ -129,12 +129,12 @@ export default function AdminDashboard() {
                         <div className={`p-4 rounded-xl border transition-all hover:shadow-md cursor-pointer h-full ${
                           facility.healthStatus === 'critical' ? 'border-red-300 bg-red-50/50 hover:bg-red-50' :
                           facility.healthStatus === 'watch' ? 'border-amber-200 bg-amber-50/30 hover:bg-amber-50/50' :
-                          'border-slate-200 hover:border-slate-300 bg-white'
+                          'border-border hover:border-border bg-card'
                         }`}>
                           <div className="flex justify-between items-start mb-3">
                             <div>
                               <div className="flex items-center gap-2">
-                                <h3 className="font-bold text-slate-900">{facility.name}</h3>
+                                <h3 className="font-bold text-foreground">{facility.name}</h3>
                                 {facility.hasActiveCalamity && (
                                   <AlertOctagon className="h-4 w-4 text-red-600 fill-red-100" />
                                 )}
@@ -168,7 +168,7 @@ export default function AdminDashboard() {
                   Critical Alerts
                 </div>
                 {criticalAlerts.length > 0 && (
-                  <span className="bg-white text-red-600 text-xs px-2 py-0.5 rounded-full font-bold">
+                  <span className="bg-card text-red-600 text-xs px-2 py-0.5 rounded-full font-bold">
                     {criticalAlerts.length}
                   </span>
                 )}
@@ -184,14 +184,14 @@ export default function AdminDashboard() {
                     {criticalAlerts.slice(0, 5).map(alert => (
                       <div key={alert.id} className="p-4 bg-red-50/30">
                         <div className="text-xs font-semibold text-red-800 mb-1">{alert.facilityName}</div>
-                        <p className="text-sm text-slate-800">{alert.message}</p>
+                        <p className="text-sm text-foreground">{alert.message}</p>
                       </div>
                     ))}
                   </div>
                 )}
                 {criticalAlerts.length > 5 && (
-                  <div className="p-3 border-t bg-slate-50 text-center">
-                    <Button asChild variant="link" className="text-xs h-auto p-0 text-slate-600">
+                  <div className="p-3 border-t bg-background text-center">
+                    <Button asChild variant="link" className="text-xs h-auto p-0 text-muted-foreground">
                       <Link href="/admin/alerts">View all alerts →</Link>
                     </Button>
                   </div>

@@ -95,8 +95,8 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-full h-full max-h-screen overflow-hidden bg-slate-50/50">
-        <header className="flex h-14 items-center gap-4 border-b bg-white px-4 lg:h-[60px] lg:px-6 sticky top-0 z-30">
+      <div className="flex flex-col w-full h-full max-h-screen overflow-hidden bg-background/50">
+        <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6 sticky top-0 z-30">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -174,7 +174,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
           
           {/* Slide-over alerts panel */}
           <div 
-            className={`w-80 border-l bg-white flex flex-col transition-all duration-300 transform ${
+            className={`w-80 border-l bg-card flex flex-col transition-all duration-300 transform ${
               alertsOpen ? "translate-x-0" : "translate-x-full hidden"
             }`}
           >

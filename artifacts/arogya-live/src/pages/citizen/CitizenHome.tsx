@@ -26,17 +26,17 @@ export default function CitizenHome() {
     <PublicLayout>
       <div className="bg-primary/5 py-12 border-b">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-slate-900">
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground">
             Find Health Services Near You
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Check real-time bed availability, doctor presence, and medicine stock before you visit.
           </p>
           
           <div className="max-w-2xl mx-auto relative mt-8">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-slate-400" />
             <Input 
-              className="h-14 pl-12 pr-4 text-lg rounded-2xl shadow-md border-slate-200"
+              className="h-14 pl-12 pr-4 text-lg rounded-2xl shadow-md border-border"
               placeholder="Search by area, PIN code, or facility name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -51,7 +51,7 @@ export default function CitizenHome() {
         {isLoading ? (
           <div className="grid md:grid-cols-2 gap-6">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className="h-48 bg-slate-100 animate-pulse rounded-2xl" />
+              <div key={i} className="h-48 bg-muted animate-pulse rounded-2xl" />
             ))}
           </div>
         ) : filteredFacilities?.length === 0 ? (
@@ -62,7 +62,7 @@ export default function CitizenHome() {
           <div className="grid md:grid-cols-2 gap-6">
             {filteredFacilities?.map(facility => (
               <Link key={facility.id} href={`/citizen/facility/${facility.id}`}>
-                <Card className="h-full hover:shadow-md transition-all cursor-pointer border-slate-200 group">
+                <Card className="h-full hover:shadow-md transition-all cursor-pointer border-border group">
                   <CardContent className="p-6 flex flex-col h-full">
                     <div className="flex justify-between items-start mb-4">
                       <div>
@@ -71,7 +71,7 @@ export default function CitizenHome() {
                             {facility.type}
                           </span>
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                           {facility.name}
                         </h3>
                       </div>
@@ -81,7 +81,7 @@ export default function CitizenHome() {
                       />
                     </div>
                     
-                    <div className="space-y-2 mt-auto pt-4 text-sm text-slate-600 border-t border-slate-100">
+                    <div className="space-y-2 mt-auto pt-4 text-sm text-muted-foreground border-t border-slate-100">
                       <div className="flex items-start gap-2">
                         <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-slate-400" />
                         <span>{facility.address}</span>

@@ -107,7 +107,7 @@ export function FacilityLayout({ children }: { children: React.ReactNode }) {
                 data-testid="btn-mobile-menu"
               >
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle navigation menu</span>
+                <span className="sr-only">{t("toggle_navigation")}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col w-72">
@@ -134,11 +134,11 @@ export function FacilityLayout({ children }: { children: React.ReactNode }) {
                 <div className="h-8 w-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">
                   {user.name.charAt(0)}
                 </div>
-                <span className="sr-only">Toggle user menu</span>
+                <span className="sr-only">{t("toggle_user_menu")}</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>{t("my_account")}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href="/settings" className="w-full cursor-pointer flex items-center">

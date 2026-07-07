@@ -5,6 +5,13 @@ import {
 } from "@workspace/api-client-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Search, MapPin, Phone, Building2 } from "lucide-react";
 import { StatusBadge } from "@/components/StatusBadge";
 import { useEffect, useState } from "react";
@@ -14,6 +21,19 @@ import { useUserLocation } from "@/hooks/useUserLocation";
 
 export default function CitizenHome() {
   const [search, setSearch] = useState("");
+  const [selectedState, setSelectedState] = useState<string>("");
+  const [selectedDistrict, setSelectedDistrict] = useState<string>("");
+
+  const districtsByState: Record<string, { label: string; id: number }[]> = {
+    "West Bengal": [
+      { label: "Hooghly", id: 1 },
+      { label: "Howrah", id: 2 },
+    ],
+  };
+
+  const availableDistricts = selectedState
+    ? districtsByState[selectedState] ?? []
+    : [];
 
   const { data: facilities, isLoading } = useGetFacilities({
     query: { queryKey: getGetFacilitiesQueryKey() },
@@ -26,7 +46,17 @@ export default function CitizenHome() {
   } = useUserLocation();
 
   const filteredFacilities = facilities
-    ?.map((facility) => ({
+    ?.filter((facility) =>
+      selectedDistrict
+        ? String(facility.districtId) === selectedDistrict
+        : true,
+    )
+    .filter(
+      (facility) =>
+        facility.name.toLowerCase().includes(search.toLowerCase()) ||
+        facility.address.toLowerCase().includes(search.toLowerCase()),
+    )
+    .map((facility) => ({
       ...facility,
       distance:
         userLocation == null
@@ -39,11 +69,6 @@ export default function CitizenHome() {
             ),
     }))
     .sort((a, b) => a.distance - b.distance)
-    .filter(
-      (facility) =>
-        facility.name.toLowerCase().includes(search.toLowerCase()) ||
-        facility.address.toLowerCase().includes(search.toLowerCase()),
-    )
     .slice(0, 5);
 
   return (
@@ -66,6 +91,40 @@ export default function CitizenHome() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+          </div>
+
+          <div className="max-w-2xl mx-auto flex flex-col md:flex-row gap-3 mt-4">
+            <Select
+              value={selectedState}
+              onValueChange={(value) => {
+                setSelectedState(value);
+                setSelectedDistrict("");
+              }}
+            >
+              <SelectTrigger className="h-12 rounded-xl border-border flex-1">
+                <SelectValue placeholder="Select State" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="West Bengal">West Bengal</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select
+              value={selectedDistrict}
+              onValueChange={setSelectedDistrict}
+              disabled={!selectedState}
+            >
+              <SelectTrigger className="h-12 rounded-xl border-border flex-1">
+                <SelectValue placeholder="Select District" />
+              </SelectTrigger>
+              <SelectContent>
+                {availableDistricts.map((d) => (
+                  <SelectItem key={d.id} value={String(d.id)}>
+                    {d.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>

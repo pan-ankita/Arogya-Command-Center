@@ -1,6 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthUser } from "@workspace/api-client-react";
-import { useGetMe, useLogout, getGetMeQueryKey } from "@workspace/api-client-react";
+import {
+  useGetMe,
+  useLogout,
+  getGetMeQueryKey,
+} from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 
@@ -21,9 +25,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     query: {
       queryKey: getGetMeQueryKey(),
       retry: false,
-    }
+    },
   });
-  
+
   const queryClient = useQueryClient();
   const [, setLocation] = useLocation();
   const logoutMutation = useLogout();
@@ -31,14 +35,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const handleLogout = () => {
     logoutMutation.mutate(undefined, {
       onSuccess: () => {
+        // queryClient.setQueryData(getGetMeQueryKey(), null);
+        // window.history.replaceState({}, "", "/");
+        // setLocation("/login");
         queryClient.setQueryData(getGetMeQueryKey(), null);
-        setLocation("/login");
-      }
+        setLocation("/");
+      },
     });
   };
 
   return (
-    <AuthContext.Provider value={{ user: user || null, isLoading, logout: handleLogout }}>
+    <AuthContext.Provider
+      value={{ user: user || null, isLoading, logout: handleLogout }}
+    >
       {children}
     </AuthContext.Provider>
   );

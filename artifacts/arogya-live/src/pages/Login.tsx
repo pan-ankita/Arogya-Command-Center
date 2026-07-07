@@ -16,7 +16,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("staff");
-  
+
   const loginMutation = useLogin();
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
@@ -30,10 +30,17 @@ export default function Login() {
       {
         onSuccess: (data) => {
           queryClient.invalidateQueries({ queryKey: getGetMeQueryKey() });
-          
+
+          // if (data.role === "district_admin") {
+          //   setLocation("/admin/dashboard");
+          // } else {
+          //   setLocation("/facility/dashboard");
+          // }
           if (data.role === "district_admin") {
+            // window.history.replaceState({}, "", "/admin/dashboard");
             setLocation("/admin/dashboard");
           } else {
+            // window.history.replaceState({}, "", "/facility/dashboard");
             setLocation("/facility/dashboard");
           }
         },
@@ -43,8 +50,8 @@ export default function Login() {
             description: t("login_failed_desc"),
             variant: "destructive",
           });
-        }
-      }
+        },
+      },
     );
   };
 
@@ -63,7 +70,10 @@ export default function Login() {
   return (
     <PublicLayout>
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 bg-background">
-        <Card className="w-full max-w-md shadow-lg border-border" data-testid="card-login">
+        <Card
+          className="w-full max-w-md shadow-lg border-border"
+          data-testid="card-login"
+        >
           <CardHeader className="space-y-2 text-center">
             <div className="flex justify-center mb-2">
               <div className="bg-primary p-3 rounded-xl text-primary-foreground shadow-sm">
@@ -87,7 +97,7 @@ export default function Login() {
                   {t("district_admin")}
                 </TabsTrigger>
               </TabsList>
-              
+
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="username">{t("username")}</Label>
@@ -114,9 +124,9 @@ export default function Login() {
                     data-testid="input-password"
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full h-11 text-base mt-2" 
+                <Button
+                  type="submit"
+                  className="w-full h-11 text-base mt-2"
                   disabled={loginMutation.isPending}
                   data-testid="btn-submit-login"
                 >

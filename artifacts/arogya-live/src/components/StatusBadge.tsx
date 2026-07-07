@@ -32,7 +32,7 @@ export function StatusBadge({ status, text }: { status: StatusColor; text: strin
   }
 
   return (
-    <Badge variant="outline" className="bg-slate-50 text-slate-700 border-slate-200 font-medium" data-testid={`status-${text}`}>
+    <Badge variant="outline" className="bg-background text-muted-foreground border-border font-medium" data-testid={`status-${text}`}>
       {text}
     </Badge>
   );

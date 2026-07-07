@@ -171,7 +171,7 @@ export default function FacilityCalamity() {
                 />
               </div>
             </CardContent>
-            <CardFooter className="bg-slate-50 border-t">
+            <CardFooter className="bg-background border-t">
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button 
@@ -238,7 +238,7 @@ export default function FacilityCalamity() {
                           <Button 
                             variant="outline" 
                             size="sm" 
-                            className="h-7 text-xs bg-white text-slate-700 hover:bg-green-50 hover:text-green-700 hover:border-green-200"
+                            className="h-7 text-xs bg-card text-muted-foreground hover:bg-green-50 hover:text-green-700 hover:border-green-200"
                             onClick={() => handleResolve(cal.id)}
                             disabled={resolveCalamity.isPending}
                           >
@@ -255,14 +255,14 @@ export default function FacilityCalamity() {
             {pastCalamities.length > 0 && (
               <Card>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-slate-700">Past Records</CardTitle>
+                  <CardTitle className="text-lg text-muted-foreground">Past Records</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     {pastCalamities.slice(0, 3).map(cal => (
-                      <div key={cal.id} className="p-3 rounded-lg border bg-slate-50 flex justify-between items-center">
+                      <div key={cal.id} className="p-3 rounded-lg border bg-background flex justify-between items-center">
                         <div>
-                          <div className="font-medium capitalize text-slate-700">{cal.type}</div>
+                          <div className="font-medium capitalize text-muted-foreground">{cal.type}</div>
                           <div className="text-xs text-slate-500">
                             {format(new Date(cal.triggeredAt!), 'MMM d, yyyy')} - {format(new Date(cal.resolvedAt!), 'MMM d, yyyy')}
                           </div>

@@ -147,7 +147,7 @@ export default function FacilityFootfall() {
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <div className="h-[300px] w-full bg-slate-100 animate-pulse rounded-xl" />
+              <div className="h-[300px] w-full bg-muted animate-pulse rounded-xl" />
             ) : (
               <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">

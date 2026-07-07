@@ -101,16 +101,16 @@ export default function FacilityBeds() {
                       <div className="flex justify-between items-end">
                         <div>
                           <div className="text-sm font-medium text-muted-foreground">Available</div>
-                          <div className="text-4xl font-bold text-slate-900">{available}</div>
+                          <div className="text-4xl font-bold text-foreground">{available}</div>
                         </div>
                         <div className="text-right">
                           <div className="text-sm font-medium text-muted-foreground">Occupied</div>
-                          <div className="text-2xl font-semibold text-slate-700">{occupied} <span className="text-base font-normal text-muted-foreground">/ {ward.totalBeds}</span></div>
+                          <div className="text-2xl font-semibold text-muted-foreground">{occupied} <span className="text-base font-normal text-muted-foreground">/ {ward.totalBeds}</span></div>
                         </div>
                       </div>
 
                       {/* Progress Bar */}
-                      <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                      <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
                         <div 
                           className={`h-full transition-all duration-500 ease-in-out ${getOccupancyColor(occupancyPercent)}`} 
                           style={{ width: `${occupancyPercent}%` }} 

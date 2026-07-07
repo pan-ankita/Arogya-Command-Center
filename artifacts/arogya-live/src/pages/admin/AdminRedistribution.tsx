@@ -97,23 +97,23 @@ export default function AdminRedistribution() {
         {isLoading ? (
           <SkeletonList />
         ) : pendingRecs.length === 0 ? (
-          <Card className="border-dashed border-2 bg-slate-50/50">
+          <Card className="border-dashed border-2 bg-background/50">
             <CardContent className="flex flex-col items-center justify-center py-16 text-slate-500">
-              <div className="bg-white p-4 rounded-full shadow-sm mb-4">
+              <div className="bg-card p-4 rounded-full shadow-sm mb-4">
                 <Check className="h-8 w-8 text-green-500" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-1">Network Balanced</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-1">Network Balanced</h3>
               <p>No redistributions currently recommended.</p>
             </CardContent>
           </Card>
         ) : (
           <div className="grid gap-6 md:grid-cols-2">
             {pendingRecs.map(rec => (
-              <Card key={rec.id} className="shadow-md border-slate-200 overflow-hidden relative">
+              <Card key={rec.id} className="shadow-md border-border overflow-hidden relative">
                 {rec.priority === 'critical' && (
                   <div className="absolute top-0 left-0 w-full h-1.5 bg-red-600" />
                 )}
-                <CardHeader className="pb-3 border-b bg-slate-50/50">
+                <CardHeader className="pb-3 border-b bg-background/50">
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-lg flex items-center gap-2">
@@ -123,14 +123,14 @@ export default function AdminRedistribution() {
                         )}
                       </CardTitle>
                       <CardDescription className="mt-1">
-                        Move <strong className="text-slate-900">{rec.suggestedQuantity} units</strong> to prevent stockout
+                        Move <strong className="text-foreground">{rec.suggestedQuantity} units</strong> to prevent stockout
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-5 pb-2">
                   <div className="flex items-center justify-between gap-4 mb-6">
-                    <div className="flex-1 text-center bg-slate-100 rounded-lg p-3 relative">
+                    <div className="flex-1 text-center bg-muted rounded-lg p-3 relative">
                       <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Source (Surplus)</div>
                       <div className="font-bold text-primary truncate" title={rec.sourceFacilityName}>{rec.sourceFacilityName}</div>
                     </div>
@@ -151,13 +151,13 @@ export default function AdminRedistribution() {
                   </div>
                   
                   {rec.reasoningText && (
-                    <div className="bg-blue-50/50 border border-blue-100 text-slate-700 text-sm p-3 rounded-lg flex gap-2">
+                    <div className="bg-blue-50/50 border border-blue-100 text-muted-foreground text-sm p-3 rounded-lg flex gap-2">
                       <Lightbulb className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
                       <p>{rec.reasoningText}</p>
                     </div>
                   )}
                 </CardContent>
-                <CardFooter className="pt-4 border-t bg-slate-50/30 flex gap-3">
+                <CardFooter className="pt-4 border-t bg-background/30 flex gap-3">
                   <Button 
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white" 
                     onClick={() => handleAccept(rec.id)}
@@ -181,19 +181,19 @@ export default function AdminRedistribution() {
 
         {handledRecs.length > 0 && (
           <div className="mt-12">
-            <h3 className="text-lg font-semibold mb-4 text-slate-700">Recent Decisions</h3>
-            <div className="bg-white border rounded-xl overflow-hidden shadow-sm">
+            <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Recent Decisions</h3>
+            <div className="bg-card border rounded-xl overflow-hidden shadow-sm">
               <div className="divide-y">
                 {handledRecs.slice(0, 5).map(rec => (
-                  <div key={rec.id} className="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                  <div key={rec.id} className="p-4 flex items-center justify-between hover:bg-background transition-colors">
                     <div className="flex items-center gap-3">
                       {rec.status === 'accepted' || rec.status === 'completed' ? (
                         <div className="bg-green-100 p-2 rounded-full"><Check className="h-4 w-4 text-green-600" /></div>
                       ) : (
-                        <div className="bg-slate-100 p-2 rounded-full"><X className="h-4 w-4 text-slate-500" /></div>
+                        <div className="bg-muted p-2 rounded-full"><X className="h-4 w-4 text-slate-500" /></div>
                       )}
                       <div>
-                        <div className="font-medium text-slate-900">
+                        <div className="font-medium text-foreground">
                           {rec.suggestedQuantity}x {rec.medicineName}
                         </div>
                         <div className="text-sm text-slate-500 flex items-center gap-1.5">

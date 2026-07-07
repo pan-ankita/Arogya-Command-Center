@@ -33,15 +33,15 @@ export default function Settings() {
           </CardHeader>
           <CardContent>
             <RadioGroup value={language} onValueChange={setLanguage} className="flex flex-col space-y-3">
-              <div className="flex items-center space-x-3 border p-3 rounded-lg hover:bg-slate-50 transition-colors">
+              <div className="flex items-center space-x-3 border p-3 rounded-lg hover:bg-background transition-colors">
                 <RadioGroupItem value="en" id="lang-en" />
                 <Label htmlFor="lang-en" className="flex-1 cursor-pointer font-medium">English</Label>
               </div>
-              <div className="flex items-center space-x-3 border p-3 rounded-lg hover:bg-slate-50 transition-colors">
+              <div className="flex items-center space-x-3 border p-3 rounded-lg hover:bg-background transition-colors">
                 <RadioGroupItem value="hi" id="lang-hi" />
                 <Label htmlFor="lang-hi" className="flex-1 cursor-pointer font-medium font-['Noto_Sans_Devanagari']">हिन्दी (Hindi)</Label>
               </div>
-              <div className="flex items-center space-x-3 border p-3 rounded-lg hover:bg-slate-50 transition-colors">
+              <div className="flex items-center space-x-3 border p-3 rounded-lg hover:bg-background transition-colors">
                 <RadioGroupItem value="bn" id="lang-bn" />
                 <Label htmlFor="lang-bn" className="flex-1 cursor-pointer font-medium font-['Noto_Sans_Bengali']">বাংলা (Bengali)</Label>
               </div>

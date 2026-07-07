@@ -81,15 +81,15 @@ export default function FacilityTests() {
                   const isEquipDown = test.status === 'equipment_down';
                   
                   return (
-                    <div key={test.id} className="p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors hover:bg-slate-50/50">
+                    <div key={test.id} className="p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors hover:bg-background/50">
                       <div className="flex items-start gap-4">
-                        <div className="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                        <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center shrink-0">
                           <TestTube className="h-6 w-6 text-slate-400" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-lg">{test.testName}</h3>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                            <span className="text-sm font-medium text-slate-500 bg-muted px-2 py-0.5 rounded">
                               {test.category || 'General'}
                             </span>
                             {test.lastCheckedAt && (

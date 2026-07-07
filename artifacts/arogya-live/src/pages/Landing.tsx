@@ -11,20 +11,20 @@ export default function Landing() {
     <PublicLayout>
       <div className="flex flex-col min-h-[calc(100vh-4rem)]">
         {/* Hero Section */}
-        {/* <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-20 bg-slate-50 bg-grid-slate-200/50 [mask-image:linear-gradient(to_bottom,white_05%,transparent_100%)] relative"> */}
-        <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-20 bg-slate-50 bg-grid-slate-200/50 relative">
+        {/* <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-20 bg-background bg-grid-slate-200/50 [mask-image:linear-gradient(to_bottom,white_05%,transparent_100%)] relative"> */}
+        <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-20 bg-background bg-grid-slate-200/50 relative">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="h-full w-full bg-slate-50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+            <div className="h-full w-full bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto space-y-8">
             <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-2xl mb-4">
               <Activity className="h-10 w-10 text-primary" />
             </div>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold text-slate-900 tracking-tight leading-tight">
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-foreground tracking-tight leading-tight">
               {t("tagline")}
              </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             {t("description")}
             </p>
 
@@ -45,7 +45,7 @@ export default function Landing() {
             </div>
 
             <div className="pt-4">
-              {/* <Button asChild variant="link" className="text-slate-500 hover:text-slate-900" data-testid="btn-find-facility"> */}
+              {/* <Button asChild variant="link" className="text-slate-500 hover:text-foreground" data-testid="btn-find-facility"> */}
               <Button
                 asChild
                 variant="link"
@@ -58,34 +58,36 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="bg-amber-50 py-16">
+        {/* <section className="bg-amber-50 py-16"> */}
+        {/* <section className="bg-background py-16"> */}
+        <section className="bg-muted py-16">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8">
+            <h2 className="text-3xl text-foreground font-bold mb-8">
               {t("notices")}
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="rounded-xl border bg-white p-6 shadow-sm">
+              <div className="rounded-xl border bg-card p-6 shadow-sm">
                 <h3 className="font-semibold text-lg">{t("vaccination_camp")}</h3>
 
-                <p className="text-slate-600 mt-2">
+                <p className="text-muted-foreground mt-2">
                   {t("vaccination_desc")}
                 </p>
               </div>
 
-              <div className="rounded-xl border bg-white p-6 shadow-sm">
+              <div className="rounded-xl border bg-card p-6 shadow-sm">
                 <h3 className="font-semibold text-lg">{t("blood_donation")}</h3>
 
-                <p className="text-slate-600 mt-2">
+                <p className="text-muted-foreground mt-2">
                   {t("blood_donation_desc")}
                 </p>
               </div>
 
-              <div className="rounded-xl border bg-white p-6 shadow-sm">
+              <div className="rounded-xl border bg-card p-6 shadow-sm">
                 <h3 className="font-semibold text-lg">
                   {t("telemedicine")}
                 </h3>
 
-                <p className="text-slate-600 mt-2">
+                <p className="text-muted-foreground mt-2">
                   {t("telemedicine_desc")}
                 </p>
               </div>
@@ -94,7 +96,7 @@ export default function Landing() {
         </section>
 
         {/* Features Section */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-card">
           <div className="container px-4 mx-auto">
             <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
               <div className="space-y-4">
@@ -102,7 +104,7 @@ export default function Landing() {
                   <Zap className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold">{t("real_time_insights")}</h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {t("real_time_insights_desc")}
                 </p>
               </div>
@@ -111,7 +113,7 @@ export default function Landing() {
                   <ShieldCheck className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold">{t("ai_redistribution")}</h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {t("ai_redistribution_desc")}
                 </p>
               </div>
@@ -120,7 +122,7 @@ export default function Landing() {
                   <Users className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold">{t("citizen_transparency")}</h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                  {t("citizen_transparency_desc")}
                 </p>
               </div>

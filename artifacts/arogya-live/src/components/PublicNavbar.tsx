@@ -49,8 +49,8 @@ export default function PublicNavbar() {
     transition
   "
           >
-            <PhoneCall className="h-5 w-5 text-purple-600" />
-            <span>{t("CONTACT")}</span>
+            <Hospital className="h-5 w-5 text-red-500" />
+            <span>{t("HEALTH CENTRES")}</span>
           </Link>
 
           {/* Services */}

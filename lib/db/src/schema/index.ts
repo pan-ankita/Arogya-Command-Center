@@ -11,3 +11,4 @@ export * from "./calamity";
 export * from "./redistribution";
 export * from "./alerts";
 export * from "./performance";
+export * from "./complaints";

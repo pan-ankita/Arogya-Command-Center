@@ -19,10 +19,10 @@ export default function PublicNavbar() {
       {/* <div className="flex items-center gap-8 overflow-x-auto"> */}
       <div className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-center">
         <div className="flex items-center gap-10">
-        {/* Home */}
-        <Link
-          href="/"
-          className="
+          {/* Home */}
+          <Link
+            href="/"
+            className="
             flex
             items-center
             gap-2
@@ -31,32 +31,32 @@ export default function PublicNavbar() {
             hover:text-blue-600
             transition
           "
-        >
-          <Home className="h-5 w-5 text-blue-600" />
-          <span>{t("HOME")}</span>
-        </Link>
+          >
+            <Home className="h-5 w-5 text-blue-600" />
+            <span>{t("HOME")}</span>
+          </Link>
 
-        {/* Health Centres */}
-        <a
-          href="#about"
-          className="
-            flex
-            items-center
-            gap-2
-            whitespace-nowrap
-            text-gray-700
-            hover:text-blue-600
-            transition
-          "
-        >
-          <Hospital className="h-5 w-5 text-red-500" />
-          <span>{t("HEALTH CENTRES")}</span>
-        </a>
+          {/* Health Centres */}
+          <Link
+            href="/citizen"
+            className="
+    flex
+    items-center
+    gap-2
+    whitespace-nowrap
+    text-gray-700
+    hover:text-blue-600
+    transition
+  "
+          >
+            <PhoneCall className="h-5 w-5 text-purple-600" />
+            <span>{t("CONTACT")}</span>
+          </Link>
 
-        {/* Services */}
-        <a
-          href="#services"
-          className="
+          {/* Services */}
+          <a
+            href="#services"
+            className="
             flex
             items-center
             gap-2
@@ -65,15 +65,15 @@ export default function PublicNavbar() {
             hover:text-blue-600
             transition
           "
-        >
-          <Stethoscope className="h-5 w-5 text-green-600" />
-          <span>{t("SERVICES")}</span>
-        </a>
+          >
+            <Stethoscope className="h-5 w-5 text-green-600" />
+            <span>{t("SERVICES")}</span>
+          </a>
 
-        {/* Notices */}
-        <a
-          href="#notices"
-          className="
+          {/* Notices */}
+          <a
+            href="#notices"
+            className="
             flex
             items-center
             gap-2
@@ -82,28 +82,28 @@ export default function PublicNavbar() {
             hover:text-blue-600
             transition
           "
-        >
-          <Megaphone className="h-5 w-5 text-orange-500" />
-          <span>{t("NOTICES")}</span>
-        </a>
+          >
+            <Megaphone className="h-5 w-5 text-orange-500" />
+            <span>{t("NOTICES")}</span>
+          </a>
 
-        {/* Contact */}
-        <a
-          href="#contact"
-          className="
-            flex
-            items-center
-            gap-2
-            whitespace-nowrap
-            text-gray-700
-            hover:text-blue-600
-            transition
-          "
-        >
-          <PhoneCall className="h-5 w-5 text-purple-600" />
-          <span>{t("CONTACT")}</span>
-        </a>
-      </div>
+          {/* Contact */}
+          <Link
+            href="/citizen/complaint"
+            className="
+    flex
+    items-center
+    gap-2
+    whitespace-nowrap
+    text-gray-700
+    hover:text-blue-600
+    transition
+  "
+          >
+            <PhoneCall className="h-5 w-5 text-purple-600" />
+            <span>{t("CONTACT")}</span>
+          </Link>
+        </div>
       </div>
     </nav>
   );

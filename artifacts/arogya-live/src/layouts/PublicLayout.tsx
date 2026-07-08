@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Activity } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
-// import PublicNavbar from "@/components/PublicNavbar";
+import PublicNavbar from "@/components/PublicNavbar";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -32,7 +32,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
-      {/* <PublicNavbar /> */}
+      <PublicNavbar />
       <main className="flex-1 w-full">{children}</main>
       <footer className="border-t bg-slate-900 text-slate-300 py-8">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">

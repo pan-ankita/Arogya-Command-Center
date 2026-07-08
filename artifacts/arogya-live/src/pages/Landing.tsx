@@ -21,16 +21,21 @@ export default function Landing() {
             <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-2xl mb-4">
               <Activity className="h-10 w-10 text-primary" />
             </div>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold text-foreground tracking-tight leading-tight">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold text-foreground tracking-tight leading-tight">
               {t("tagline")}
-             </h1>
+            </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {t("description")}
+              {t("description")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
               {/* <Button asChild size="lg" className="h-14 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 w-full sm:w-auto" data-testid="btn-login-staff"> */}
-                <Button asChild size="lg" className="h-14 px-8 rounded-xl bg-blue-400 hover:bg-blue-700 text-white text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-testid="btn-login-staff">
+              <Button
+                asChild
+                size="lg"
+                className="h-14 px-8 rounded-xl bg-blue-400 hover:bg-blue-700 text-white text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                data-testid="btn-login-staff"
+              >
                 <Link href="/login?role=staff">{t("login_staff")}</Link>
               </Button>
               {/* <Button
@@ -39,7 +44,13 @@ export default function Landing() {
                 variant="secondary"
                 className="h-14 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 w-full sm:w-auto"
                 data-testid="btn-login-admin"> */}
-                <Button asChild size="lg" variant="secondary" className="h-14 px-8 rounded-xl bg-emerald-400 hover:bg-emerald-700 text-white text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-testid="btn-login-admin">
+              <Button
+                asChild
+                size="lg"
+                variant="secondary"
+                className="h-14 px-8 rounded-xl bg-emerald-400 hover:bg-emerald-700 text-white text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                data-testid="btn-login-admin"
+              >
                 <Link href="/login?role=admin"> {t("login_admin")}</Link>
               </Button>
             </div>
@@ -67,7 +78,9 @@ export default function Landing() {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <h3 className="font-semibold text-lg">{t("vaccination_camp")}</h3>
+                <h3 className="font-semibold text-lg">
+                  {t("vaccination_camp")}
+                </h3>
 
                 <p className="text-muted-foreground mt-2">
                   {t("vaccination_desc")}
@@ -83,9 +96,7 @@ export default function Landing() {
               </div>
 
               <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <h3 className="font-semibold text-lg">
-                  {t("telemedicine")}
-                </h3>
+                <h3 className="font-semibold text-lg">{t("telemedicine")}</h3>
 
                 <p className="text-muted-foreground mt-2">
                   {t("telemedicine_desc")}
@@ -103,7 +114,9 @@ export default function Landing() {
                 <div className="h-12 w-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
                   <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">{t("real_time_insights")}</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("real_time_insights")}
+                </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {t("real_time_insights_desc")}
                 </p>
@@ -112,7 +125,9 @@ export default function Landing() {
                 <div className="h-12 w-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center">
                   <ShieldCheck className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">{t("ai_redistribution")}</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("ai_redistribution")}
+                </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {t("ai_redistribution_desc")}
                 </p>
@@ -121,9 +136,11 @@ export default function Landing() {
                 <div className="h-12 w-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center">
                   <Users className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold">{t("citizen_transparency")}</h3>
+                <h3 className="text-xl font-semibold">
+                  {t("citizen_transparency")}
+                </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                 {t("citizen_transparency_desc")}
+                  {t("citizen_transparency_desc")}
                 </p>
               </div>
             </div>

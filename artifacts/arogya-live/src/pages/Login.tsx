@@ -16,7 +16,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("staff");
-  
+
   const loginMutation = useLogin();
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
@@ -30,10 +30,17 @@ export default function Login() {
       {
         onSuccess: (data) => {
           queryClient.invalidateQueries({ queryKey: getGetMeQueryKey() });
-          
+
+          // if (data.role === "district_admin") {
+          //   setLocation("/admin/dashboard");
+          // } else {
+          //   setLocation("/facility/dashboard");
+          // }
           if (data.role === "district_admin") {
+            // window.history.replaceState({}, "", "/admin/dashboard");
             setLocation("/admin/dashboard");
           } else {
+            // window.history.replaceState({}, "", "/facility/dashboard");
             setLocation("/facility/dashboard");
           }
         },
@@ -43,8 +50,8 @@ export default function Login() {
             description: t("login_failed_desc"),
             variant: "destructive",
           });
-        }
-      }
+        },
+      },
     );
   };
 
@@ -62,8 +69,11 @@ export default function Login() {
 
   return (
     <PublicLayout>
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 bg-slate-50">
-        <Card className="w-full max-w-md shadow-lg border-slate-200" data-testid="card-login">
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 bg-background">
+        <Card
+          className="w-full max-w-md shadow-lg border-border"
+          data-testid="card-login"
+        >
           <CardHeader className="space-y-2 text-center">
             <div className="flex justify-center mb-2">
               <div className="bg-primary p-3 rounded-xl text-primary-foreground shadow-sm">
@@ -87,7 +97,7 @@ export default function Login() {
                   {t("district_admin")}
                 </TabsTrigger>
               </TabsList>
-              
+
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="username">{t("username")}</Label>
@@ -114,9 +124,9 @@ export default function Login() {
                     data-testid="input-password"
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full h-11 text-base mt-2" 
+                <Button
+                  type="submit"
+                  className="w-full h-11 text-base mt-2"
                   disabled={loginMutation.isPending}
                   data-testid="btn-submit-login"
                 >
@@ -129,15 +139,15 @@ export default function Login() {
               </form>
             </Tabs>
           </CardContent>
-          <CardFooter className="flex flex-col gap-4 border-t bg-slate-50/50 p-6">
+          <CardFooter className="flex flex-col gap-4 border-t bg-background/50 p-6">
             <div className="text-sm font-medium text-slate-500 mb-2">{t("demo_credentials")}</div>
             <div className="grid grid-cols-2 gap-3 w-full">
               <Button variant="outline" className="text-xs h-auto py-2 flex flex-col items-start gap-1" onClick={() => handleDemoFill("staff")}>
-                <span className="font-semibold text-slate-700">{t("staff_demo")}</span>
+                <span className="font-semibold bg-background/50">{t("staff_demo")}</span>
                 <span className="text-slate-500 font-mono">rishra_phc / demo1234</span>
               </Button>
               <Button variant="outline" className="text-xs h-auto py-2 flex flex-col items-start gap-1" onClick={() => handleDemoFill("admin")}>
-                <span className="font-semibold text-slate-700">{t("admin_demo")}</span>
+                <span className="font-semibold text-muted-foreground">{t("admin_demo")}</span>
                 <span className="text-slate-500 font-mono">admin_hooghly / admin1234</span>
               </Button>
             </div>

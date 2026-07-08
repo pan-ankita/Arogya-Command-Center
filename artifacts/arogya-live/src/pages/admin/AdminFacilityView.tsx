@@ -94,7 +94,7 @@ export default function AdminFacilityView() {
               <CardTitle className="text-lg">Overall Health Score</CardTitle>
             </CardHeader>
             <CardContent>
-              {loadingHealth ? <div className="h-32 animate-pulse bg-slate-100 rounded-lg" /> : (
+              {loadingHealth ? <div className="h-32 animate-pulse bg-muted rounded-lg" /> : (
                 <div className="flex flex-col items-center justify-center py-4">
                   <div className={`text-6xl font-bold tracking-tighter ${getScoreColor(health?.score || 0)}`}>
                     {health?.score || 0}
@@ -103,15 +103,15 @@ export default function AdminFacilityView() {
                   
                   <div className="w-full mt-8 space-y-3">
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-600 flex items-center gap-2"><Package className="h-4 w-4"/> Stock Reliability</span>
+                      <span className="text-muted-foreground flex items-center gap-2"><Package className="h-4 w-4"/> Stock Reliability</span>
                       <span className="font-semibold">{health?.breakdown?.stockReliability || 0}%</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-600 flex items-center gap-2"><Bed className="h-4 w-4"/> Bed Availability</span>
+                      <span className="text-muted-foreground flex items-center gap-2"><Bed className="h-4 w-4"/> Bed Availability</span>
                       <span className="font-semibold">{100 - (health?.breakdown?.bedStress || 0)}%</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-600 flex items-center gap-2"><Stethoscope className="h-4 w-4"/> Doctor Presence</span>
+                      <span className="text-muted-foreground flex items-center gap-2"><Stethoscope className="h-4 w-4"/> Doctor Presence</span>
                       <span className="font-semibold">{health?.breakdown?.doctorAttendance || 0}%</span>
                     </div>
                   </div>
@@ -126,7 +126,7 @@ export default function AdminFacilityView() {
               <Card className={`shadow-sm ${criticalStock.length > 0 ? 'border-red-200 bg-red-50/20' : ''}`}>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl ${criticalStock.length > 0 ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-500'}`}>
+                    <div className={`p-3 rounded-xl ${criticalStock.length > 0 ? 'bg-red-100 text-red-600' : 'bg-muted text-slate-500'}`}>
                       <Package className="h-6 w-6" />
                     </div>
                     <div>
@@ -134,7 +134,7 @@ export default function AdminFacilityView() {
                       {criticalStock.length > 0 ? (
                         <div>
                           <p className="text-red-600 font-medium mb-2">{criticalStock.length} items critical</p>
-                          <ul className="text-sm text-slate-600 space-y-1">
+                          <ul className="text-sm text-muted-foreground space-y-1">
                             {criticalStock.slice(0, 3).map(s => (
                               <li key={s.id}>• {s.medicineName} ({s.currentQuantity} {s.unit})</li>
                             ))}
@@ -151,13 +151,13 @@ export default function AdminFacilityView() {
               <Card className={`shadow-sm ${bedOccupancy >= 90 ? 'border-red-200 bg-red-50/20' : bedOccupancy >= 75 ? 'border-amber-200 bg-amber-50/20' : ''}`}>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl ${bedOccupancy >= 90 ? 'bg-red-100 text-red-600' : bedOccupancy >= 75 ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-500'}`}>
+                    <div className={`p-3 rounded-xl ${bedOccupancy >= 90 ? 'bg-red-100 text-red-600' : bedOccupancy >= 75 ? 'bg-amber-100 text-amber-600' : 'bg-muted text-slate-500'}`}>
                       <Bed className="h-6 w-6" />
                     </div>
                     <div className="w-full">
                       <h3 className="font-semibold text-lg mb-1">Bed Occupancy</h3>
                       <div className="flex items-end justify-between mb-2">
-                        <span className={`text-2xl font-bold ${bedOccupancy >= 90 ? 'text-red-600' : bedOccupancy >= 75 ? 'text-amber-600' : 'text-slate-900'}`}>{bedOccupancy}%</span>
+                        <span className={`text-2xl font-bold ${bedOccupancy >= 90 ? 'text-red-600' : bedOccupancy >= 75 ? 'text-amber-600' : 'text-foreground'}`}>{bedOccupancy}%</span>
                         <span className="text-sm text-slate-500">{occupiedBeds} / {totalBeds} occupied</span>
                       </div>
                       <div className="w-full bg-slate-200 rounded-full h-2">

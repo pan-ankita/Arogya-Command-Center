@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"
 import { useAuth } from "@/contexts/AuthContext";
 import { FacilityLayout } from "@/layouts/FacilityLayout";
 import { 
@@ -15,6 +15,7 @@ import { SkeletonCard } from "@/components/SkeletonCard";
 import { Users, Plus, Minus } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { format, subDays } from "date-fns";
+import { io } from "socket.io-client";
 
 const DEPARTMENTS = ["OPD", "Emergency", "ANC", "Pediatric", "General"];
 
@@ -23,6 +24,21 @@ export default function FacilityFootfall() {
   const facilityId = user?.facilityId as number;
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  useEffect(() => {
+  if (!facilityId) return;
+
+  const socket = io("http://localhost:3001");
+
+  socket.on("footfall-update", () => {
+    queryClient.invalidateQueries({
+      queryKey: getGetFootfallQueryKey({ facilityId, days: 7 }),
+    });
+  });
+
+  return () => {
+    socket.disconnect();
+  };
+}, [facilityId, queryClient]);
   const today = format(new Date(), 'yyyy-MM-dd');
   
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -147,7 +163,7 @@ export default function FacilityFootfall() {
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <div className="h-[300px] w-full bg-slate-100 animate-pulse rounded-xl" />
+              <div className="h-[300px] w-full bg-muted animate-pulse rounded-xl" />
             ) : (
               <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">

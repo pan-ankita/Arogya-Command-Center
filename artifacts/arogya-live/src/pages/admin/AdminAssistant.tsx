@@ -82,8 +82,8 @@ export default function AdminAssistant() {
           <p className="text-muted-foreground">Ask questions about your data in plain language.</p>
         </div>
 
-        <Card className="flex-1 flex flex-col overflow-hidden shadow-md border-slate-200">
-          <CardContent className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-slate-50/50">
+        <Card className="flex-1 flex flex-col overflow-hidden shadow-md border-border">
+          <CardContent className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-background/50">
             {messages.map((msg) => (
               <div 
                 key={msg.id} 
@@ -98,7 +98,7 @@ export default function AdminAssistant() {
                 <div className="flex flex-col gap-1">
                   <div className={`p-3 sm:p-4 rounded-2xl shadow-sm text-sm sm:text-base ${
                     msg.role === 'user' 
-                      ? 'bg-white border text-slate-900 rounded-tr-sm' 
+                      ? 'bg-card border text-foreground rounded-tr-sm' 
                       : 'bg-primary text-primary-foreground rounded-tl-sm'
                   }`}>
                     {msg.content}
@@ -107,7 +107,7 @@ export default function AdminAssistant() {
                   {msg.sources && msg.sources.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
                       {msg.sources.map((src, i) => (
-                        <span key={i} className="text-[10px] bg-white border text-slate-500 px-2 py-0.5 rounded-full shadow-sm">
+                        <span key={i} className="text-[10px] bg-card border text-slate-500 px-2 py-0.5 rounded-full shadow-sm">
                           Source: {src}
                         </span>
                       ))}
@@ -131,13 +131,13 @@ export default function AdminAssistant() {
             <div ref={messagesEndRef} />
           </CardContent>
           
-          <div className="p-4 bg-white border-t">
+          <div className="p-4 bg-card border-t">
             <form onSubmit={handleSubmit} className="flex gap-2">
               <Input 
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Ask about stockouts, bed availability, or staff attendance..."
-                className="flex-1 rounded-full bg-slate-50 border-slate-200 focus-visible:ring-primary shadow-inner"
+                className="flex-1 rounded-full bg-background border-border focus-visible:ring-primary shadow-inner"
                 disabled={askAssistant.isPending}
               />
               <Button 

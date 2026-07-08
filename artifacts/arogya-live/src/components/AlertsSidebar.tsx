@@ -54,7 +54,7 @@ export function AlertsSidebar({ onClose }: { onClose: () => void }) {
         {isLoading ? (
           <div className="p-4 space-y-4">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className="animate-pulse flex gap-3 p-3 rounded-xl bg-slate-100">
+              <div key={i} className="animate-pulse flex gap-3 p-3 rounded-xl bg-muted">
                 <div className="w-5 h-5 rounded-full bg-slate-200 shrink-0" />
                 <div className="flex-1 space-y-2">
                   <div className="h-4 bg-slate-200 rounded w-3/4" />
@@ -74,7 +74,7 @@ export function AlertsSidebar({ onClose }: { onClose: () => void }) {
               <div 
                 key={alert.id} 
                 className={`p-3 rounded-xl border flex gap-3 group relative ${
-                  !alert.isRead ? getSeverityColor(alert.severity) : "bg-white border-slate-100 opacity-70"
+                  !alert.isRead ? getSeverityColor(alert.severity) : "bg-card border-slate-100 opacity-70"
                 }`}
               >
                 <div className="shrink-0 mt-0.5">
@@ -89,7 +89,7 @@ export function AlertsSidebar({ onClose }: { onClose: () => void }) {
                       {formatDistanceToNow(new Date(alert.createdAt), { addSuffix: true })}
                     </span>
                   </div>
-                  <p className="text-sm text-slate-800 font-medium leading-snug">
+                  <p className="text-sm text-foreground font-medium leading-snug">
                     {alert.message}
                   </p>
                   
@@ -97,7 +97,7 @@ export function AlertsSidebar({ onClose }: { onClose: () => void }) {
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="h-6 text-xs mt-2 -ml-2 text-slate-500 hover:text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="h-6 text-xs mt-2 -ml-2 text-slate-500 hover:text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
                       onClick={() => handleMarkRead(alert.id)}
                     >
                       Mark as read

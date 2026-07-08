@@ -40,16 +40,52 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const sessionSecret = process.env.SESSION_SECRET ?? "arogya-live-secret-fallback";
+const sessionSecret =
+  process.env.SESSION_SECRET ?? "arogya-live-secret-fallback";
+
+//for local development
+// app.use(
+//   session({
+//     secret: sessionSecret,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       httpOnly: true,
+//       secure: process.env.NODE_ENV === "production",
+//       maxAge: 7 * 24 * 60 * 60 * 1000,
+//     },
+//   }),
+// );
+
+// for vercel deployment
+// app.use(
+//   session({
+//     secret: sessionSecret,
+//     resave: false,
+//     saveUninitialized: false,
+
+//     cookie: {
+//       httpOnly: true,
+//       secure: true,
+//       sameSite: "none",
+//       maxAge: 7 * 24 * 60 * 60 * 1000,
+//     },
+//   }),
+// );
+
+//for both local development and vercel deployment
+const isProduction = process.env.NODE_ENV === "production";
 
 app.use(
   session({
     secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
+
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: isProduction,
+      sameSite: isProduction ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     },
   }),

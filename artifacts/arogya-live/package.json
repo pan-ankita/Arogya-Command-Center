@@ -79,5 +79,6 @@
   },
   "dependencies": {
     "socket.io-client": "^4.8.3"
+    "@react-google-maps/api": "^2.20.8"
   }
 }

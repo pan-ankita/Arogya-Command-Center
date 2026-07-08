@@ -33,6 +33,7 @@ import AdminAssistant from "@/pages/admin/AdminAssistant";
 // Citizen Pages
 import CitizenHome from "@/pages/citizen/CitizenHome";
 import CitizenFacilityView from "@/pages/citizen/CitizenFacilityView";
+import CitizenComplaint from "@/pages/citizen/CitizenComplaint";
 
 const queryClient = new QueryClient();
 
@@ -145,6 +146,7 @@ function Router() {
 
       {/* Public Routes */}
       <Route path="/citizen" component={CitizenHome} />
+      <Route path="/citizen/complaint" component={CitizenComplaint} />
       <Route path="/citizen/facility/:id" component={CitizenFacilityView} />
 
       <Route component={NotFound} />

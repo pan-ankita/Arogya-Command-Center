@@ -13,9 +13,9 @@ import alertsRouter from "./alerts";
 import redistRouter from "./redistribution";
 import aiRouter from "./ai";
 import publicRouter from "./public";
+import complaintsRouter from "./complaints";
 
 const router: IRouter = Router();
-
 router.use(healthRouter);
 router.use(authRouter);
 router.use(facilitiesRouter);
@@ -30,5 +30,6 @@ router.use(alertsRouter);
 router.use(redistRouter);
 router.use(aiRouter);
 router.use(publicRouter);
+router.use(complaintsRouter);
 
 export default router;

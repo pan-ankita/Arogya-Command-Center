@@ -158,9 +158,9 @@ pnpm dev
 
 ## 👥 Contributors
 
-* Ankita Pan(https://github.com/pan-ankita)
-* Rajashree Mondal(https://github.com/Rajashree2005-mondal)
-* Shubhasri Roy(https://github.com/ShubhasriRoy)
+* [Ankita Pan](https://github.com/pan-ankita)
+* [Rajashree Mondal](https://github.com/Rajashree2005-mondal)
+* [Shubhasri Roy](https://github.com/ShubhasriRoy)
 
 ---
 
